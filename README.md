@@ -9,4 +9,4 @@ Mini reaction test game
 <img src="the_game-screenshot2.png">
 <hr>
 Beginnings of an asset editor
-<img src="scs-screenshot3.png">
+<img src="the_game-screenshot3.png">
