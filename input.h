@@ -35,13 +35,12 @@ typedef struct {
     void (*flush)();
 } input_driver_t;
 
-input_driver_t *input_driver;
-
+extern input_driver_t *input_driver;
 
 /*
  * tty input driver
  */
-input_driver_t input_tty_driver;
+extern input_driver_t input_tty_driver;
 void input_tty_open(char *device);
 void input_tty_get_key(struct timeval *tv, int *key, int *type);
 void input_tty_flush(void);
@@ -51,7 +50,7 @@ void input_tty_close(void);
 /*
  * /dev/input/eventX input driver
  */
-input_driver_t input_event_driver;
+extern input_driver_t input_event_driver;
 void input_event_open(char *device);
 void input_event_get_key(struct timeval *tv, int *key, int *type);
 void input_event_close(void);

@@ -23,10 +23,10 @@ OPT_OUTPUT = -o
 LINK    = $(CC)
 DEBUG   = -ggdb -DDEBUG
 OPTIONS = -DUSE_CURSES -DUSE_TTY -DUSE_EVENT -DUSE_REALTIME
-CFLAGS  = $(DEBUG) -Wall -D_GNU_SOURCE=1 -D_REENTRANT $(OPTIONS)
+CFLAGS  = $(DEBUG) -Wall -fPIC -D_GNU_SOURCE=1 -D_REENTRANT $(OPTIONS)
 LDFLAGS = -lrt -lncursesw
 LIB_PRE = lib
-LIB_EXT = a 
+LIB_EXT = so
 OBJ_EXT = o
 DEL_CMD = rm -f
 endif
@@ -99,14 +99,15 @@ endif
 # link target for UNIX
 ifeq ($(OS_TYPE),UNIX)
 $(LIB): $(O_FILES) $(H_FILES)
-	ar r $(LIB) $(O_FILES)
+#	ar r $(LIB) $(O_FILES)
+	gcc -shared -o $(LIB) $(O_FILES)
 endif
 
 $(GAME): $(LIB) $(GAME_O_FILES)
-	$(CC) $(CFLAGS) -o $(GAME) $(GAME_O_FILES) $(LIB) $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $(GAME) $(GAME_O_FILES) -l$(LIB_NAME) -L. -Wl,-rpath,. $(LDFLAGS)
 
 $(EDIT): $(LIB) $(EDIT_O_FILES)
-	$(CC) $(CFLAGS) -o $(EDIT) $(EDIT_O_FILES) $(LIB) $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $(EDIT) $(EDIT_O_FILES) -l$(LIB_NAME) -L. -Wl,-rpath,. $(LDFLAGS)
 
 clean:
 	$(DEL_CMD) $(LIB) $(O_FILES) *.err *.log

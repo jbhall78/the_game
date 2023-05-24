@@ -18,7 +18,7 @@ typedef struct {
     void (*close)(void);
 } random_driver_t;
 
-random_driver_t *random_driver;
+extern random_driver_t *random_driver;
 
 void
 random_dev_urandom_open(void)

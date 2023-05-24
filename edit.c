@@ -33,6 +33,10 @@
 screen_t *screen;
 widget_t *root;
 unsigned int mouse_x = 0, mouse_y = 0;
+input_driver_t *input_driver;
+extern input_driver_t input_tty_driver;
+extern input_driver_t input_event_driver;
+random_driver_t *random_driver;
 
 void
 edit_background_draw(screen_t *s, widget_t *w)

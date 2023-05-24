@@ -46,6 +46,17 @@
 #include "mkstr.h"
 
 game_data_t *game_data;
+input_driver_t *input_driver;
+extern input_driver_t input_tty_driver;
+extern input_driver_t input_event_driver;
+
+//extern clock_driver_t *clock_driver;
+extern clock_driver_t clock_gettimeofday_driver;
+extern clock_driver_t clock_gettime_driver;
+
+random_driver_t *random_driver;
+extern random_driver_t random_dev_urandom_driver;
+
 
 int
 game_keys(int key, int type)

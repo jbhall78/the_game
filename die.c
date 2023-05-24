@@ -48,7 +48,7 @@ _die(const char *filename, const char *func, int line, char *fmt, ...)
 	p2 = strdup(p);
 #endif
 
-    game_shutdown();
+    //game_shutdown();
 
     fputs(p2, stderr);
 

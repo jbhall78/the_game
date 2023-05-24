@@ -22,13 +22,6 @@ typedef struct {
 
 extern game_data_t *game_data;
 
-#if 0
-time_driver_t  *time_driver;
-input_driver_t *input_driver;
-term_driver_t  *term_driver;
-random_driver_t *random_driver;
-#endif
-
 typedef int32_t int32_vec2_t[2];
 
 typedef struct {

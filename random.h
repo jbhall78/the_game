@@ -12,10 +12,10 @@ typedef struct {
     void (*close)(void);
 } random_driver_t;
 
-random_driver_t *random_driver;
+extern random_driver_t *random_driver;
 
 /* /dev/urandom driver */
-random_driver_t random_dev_urandom_driver;
+extern random_driver_t random_dev_urandom_driver;
 void random_dev_urandom_open(void);
 unsigned long int random_dev_urandom_read(void);
 void random_dev_urandom_close(void);
